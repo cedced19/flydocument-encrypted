@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Flydocument Encrypted | <%=texts.HOME_PAGE %></title>
+    <title>Flydocument Encrypted | <%=texts.ACCESS_FILE %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
     <h1>Flydocument Encrypted</h1>
-    <p><%=texts.WELCOME_MSG %> Flydocument Encrypted.</p>
-    <form action="/files/" method="post" enctype="multipart/form-data">
+    <h2><%=texts.ACCESS_FILE_MSG %></h2>
+    <p><%=texts.PASSPHRASE %>:<p>
+    <form action="/files/<%=filename %>" method="get">
      <input type="password" name="passphrase">
-     <input type="file" name="file">
      <input type="submit">
     </form>
   </body>

@@ -1,5 +1,11 @@
 {
   "WELCOME_MSG": "Welcome to",
   "ERROR": "Error",
-  "HOME_PAGE": "Home page"
+  "HOME_PAGE": "Home page",
+  "FILE_UPLOADED": "File Uploaded",
+  "FILE_UPLOADED_MSG": "The file has been uploaded with success!",
+  "SHARE_LINK": "Share link",
+  "ACCESS_FILE": "Access File",
+  "ACCESS_FILE_MSG": "You need to provide a passphrase to decrypt and get the file.",
+  "PASSPHRASE": "Passphrase"
 }

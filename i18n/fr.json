@@ -1,5 +1,11 @@
 {
   "WELCOME_MSG": "Bienvenue sur",
   "ERROR": "Erreur",
-  "HOME_PAGE": "Accueil"
+  "HOME_PAGE": "Accueil",
+  "FILE_UPLOADED": "Fichier mise en ligne",
+  "FILE_UPLOADED_MSG": "Le fichier a été téléversé avec succès !",
+  "SHARE_LINK": "Lien de partage",
+  "ACCESS_FILE": "Accéder au fichier",
+  "ACCESS_FILE_MSG": "Vous devez fournir une phrase secrète pour décrypter et obtenir le fichier.",
+  "PASSPHRASE": "Phrase de passe"
 }
