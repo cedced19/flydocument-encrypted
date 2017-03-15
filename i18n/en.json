@@ -7,5 +7,8 @@
   "SHARE_LINK": "Share link",
   "ACCESS_FILE": "Access File",
   "ACCESS_FILE_MSG": "You need to provide a passphrase to decrypt and get the file.",
-  "PASSPHRASE": "Passphrase"
+  "PASSPHRASE": "Passphrase",
+  "FILE": "File",
+  "SUBMIT": "Submit",
+  "BROWSE": "Browse"
 }

@@ -7,5 +7,8 @@
   "SHARE_LINK": "Lien de partage",
   "ACCESS_FILE": "Accéder au fichier",
   "ACCESS_FILE_MSG": "Vous devez fournir une phrase secrète pour décrypter et obtenir le fichier.",
-  "PASSPHRASE": "Phrase de passe"
+  "PASSPHRASE": "Phrase de passe",
+  "FILE": "Fichier",
+  "SUBMIT": "Valider",
+  "BROWSE": "Explorer"
 }

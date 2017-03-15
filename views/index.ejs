@@ -8,9 +8,19 @@
     <h1>Flydocument Encrypted</h1>
     <p><%=texts.WELCOME_MSG %> Flydocument Encrypted.</p>
     <form action="/files/" method="post" enctype="multipart/form-data">
+     <label for="passphrase"><%=texts.PASSPHRASE %>:</label>
      <input type="password" name="passphrase">
-     <input type="file" name="file">
-     <input type="submit">
+     <label for="file"><%=texts.FILE %>: <span id="file-label"></span></label>
+     <label class="btn btn-file">
+       <%=texts.BROWSE %> <input type="file" name="file" id="file-input">
+     </label>
+     <br>
+     <input type="submit" class="btn btn-submit" value="<%=texts.SUBMIT %>">
     </form>
+    <script type="text/javascript">
+      document.getElementById('file-input').addEventListener('change', function () {
+        document.getElementById('file-label').innerHTML = this.files[0].name;
+      });
+    </script>
   </body>
 </html>
