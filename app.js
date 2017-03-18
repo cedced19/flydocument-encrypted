@@ -11,6 +11,7 @@ var minifyCSS = require('express-minify');
 
 var index = require('./routes/index');
 var files = require('./routes/files-api');
+var users = require('./routes/users-api');
 
 var app = express();
 
@@ -42,6 +43,7 @@ app.use(i18n({
 
 app.use('/', index);
 app.use('/files', files);
+app.use('/users', users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

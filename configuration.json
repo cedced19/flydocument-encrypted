@@ -1,3 +1,5 @@
 {
-  "hashsecret": "76656f89f7b54307931c849b5bfbf372"
+  "hashsecret": "76656f89f7b54307931c849b5bfbf372",
+  "files_folder": "./uploads/",
+  "users": []
 }

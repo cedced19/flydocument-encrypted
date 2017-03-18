@@ -6,7 +6,7 @@ var fs = require('fs');
 var config = require('../configuration.json');
 var existsFile = require('exists-file');
 var multer = require('multer')({
-  dest: './uploads/'
+  dest: config.files_folder
 });
 
 
@@ -17,7 +17,7 @@ router.post('/', auth, multer.single('file'), function(req, res, next) {
       err.status = 400;
       return next(err);
     }
-    var path = './uploads/' + req.file.filename;
+    var path = config.files_folder + req.file.filename;
 
     var cipher = crypto.createCipher('aes256', crypto.createHmac('sha256', config.hashsecret).update(req.body.passphrase).digest('hex'));
     var input = fs.createReadStream(path);
@@ -37,7 +37,7 @@ router.post('/', auth, multer.single('file'), function(req, res, next) {
 
 /* GET File: get a file */
 router.get('/:filename', function(req, res, next) {
-    var path = './uploads/' + req.params.filename;
+    var path = config.files_folder + req.params.filename;
     if (req.query.passphrase === undefined) {
       err = new Error('You must give a passphrase.');
       err.status = 400;
@@ -71,7 +71,7 @@ router.get('/:filename', function(req, res, next) {
 
 /* GET File: render view to give the passphrase */
 router.get('/access/:filename/', function(req, res) {
-  existsFile('./uploads/' + req.params.filename + '.enc', function (err, exists) {
+  existsFile(config.files_folder + req.params.filename + '.enc', function (err, exists) {
     if (exists) {
       res.locals.filename = req.params.filename;
       res.render('access-file');
