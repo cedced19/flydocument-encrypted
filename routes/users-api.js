@@ -7,8 +7,7 @@ var config = require('../configuration.json');
 
 var getUser = function (email) {
   for (var i in config.users) {
-    if (config.users[i].email == email)  {
-      break;
+    if (config.users[i].email == email) {
       return {user: config.users[i], key: i };
     }
   }
@@ -20,7 +19,7 @@ var saveConfiguration = function (cb) {
 };
 
 /* GET Users: get all users */
-router.get('/', function(req, res) {
+router.get('/', auth, function(req, res) {
     res.render('users-list');
 });
 
@@ -48,7 +47,7 @@ router.post('/new/', auth, function(req, res, next) {
         });
       });
     } else {
-      err = new Error('Email already exists.');
+      var err = new Error('Email already exists.');
       err.status = 400;
       return next(err);
     }
