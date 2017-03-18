@@ -3,6 +3,7 @@ var router = express.Router();
 var auth = require('../policies/auth');
 var crypto = require('crypto');
 var fs = require('fs');
+var tika = require('tika');
 var config = require('../configuration.json');
 var existsFile = require('exists-file');
 var multer = require('multer')({
@@ -58,8 +59,12 @@ router.get('/:filename', function(req, res, next) {
             });
         });
         decipher.on('end', function () {
-          fs.createReadStream(path).pipe(res);
-          fs.unlink(path);
+          tika.type(path, function(err, result) {
+              if (err) next(err);
+              res.setHeader('Content-Type', result);
+              fs.createReadStream(path).pipe(res);
+              fs.unlink(path);
+          });
         });
       } else {
         var err = new Error('No file available at this adress.');
