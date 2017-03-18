@@ -14,18 +14,19 @@ router.get('/', function(req, res, next) {
   }
 });
 
+/* GET login page */
 router.get('/login', function(req, res) {
     res.render('login');
 });
 
-router.post('/login', passport.authenticate('local'), function(req, res) {
-    if (req.xhr) {
-        res.json(req.user);
-    } else {
-        res.redirect('/');
-    }
+/* GET login */
+router.post('/login', passport.authenticate('local', {
+    failureRedirect : '/login'
+}), function(req, res) {
+    res.redirect('/');
 });
 
+/* GET logout */
 router.get('/logout', function(req, res) {
     req.logout();
     res.redirect('/');

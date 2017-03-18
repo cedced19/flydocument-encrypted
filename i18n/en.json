@@ -19,5 +19,6 @@
   "EMAIL": "Email",
   "FILE": "File",
   "SUBMIT": "Submit",
-  "BROWSE": "Browse"
+  "BROWSE": "Browse",
+  "LOGOUT": "Logout"
 }

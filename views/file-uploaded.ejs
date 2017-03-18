@@ -8,6 +8,7 @@
     <h1>Flydocument Encrypted</h1>
     <h2><%=texts.FILE_UPLOADED_MSG %></h2>
     <p><%=texts.SHARE_LINK %>: <a href="/files/access/<%= filename %>/" target="_blank"><span id="location"></span>/files/access/<%= filename %>/</a></p>
+    <a href="/logout" class="logout-btn"><%=texts.LOGOUT %></a>
     <script type="text/javascript">
       document.getElementById('location').innerHTML = window.location.protocol + '//' + window.location.hostname + (window.location.port == '' ? '' : ':' + window.location.port);
     </script>

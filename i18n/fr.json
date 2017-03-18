@@ -19,5 +19,6 @@
   "EMAIL": "Courriel",
   "FILE": "Fichier",
   "SUBMIT": "Valider",
-  "BROWSE": "Explorer"
+  "BROWSE": "Explorer",
+  "LOGOUT": "Se déconnecter"
 }

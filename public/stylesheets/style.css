@@ -93,3 +93,8 @@ input[type='password'], input[type='email'] {
 .btn-submit {
     float: right;
 }
+.logout-btn {
+    position: absolute;
+    bottom: 20px;
+    right: 50px;
+}
