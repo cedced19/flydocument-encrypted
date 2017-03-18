@@ -52,13 +52,13 @@ app.use(i18n({
 app.use(helmet());
 app.use(flash());
 app.use(session({
-    secret: 'just learn faster',
+    secret: 'send encrypted document',
     name: 'flydocument-encrypted-session',
     proxy: false,
     resave: true,
     saveUninitialized: true,
     store: new MongoDBStore({
-      uri: 'mongodb://localhost:27017/flydocument',
+      uri: 'mongodb://localhost:27017/flydocument-encrypted',
       collection: 'sessions'
     })
 }));
