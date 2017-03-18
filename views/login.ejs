@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Flydocument Encrypted | <%=texts.LOGIN_PAGE %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>Flydocument Encrypted</h1>
+    <p><%=texts.LOGIN_PAGE_MSG %> Flydocument Encrypted.</p>
+    <form action="/login" method="post">
+      <label for="email"><%=texts.EMAIL %>:</label>
+      <input type="email" name="email">
+      <label for="password"><%=texts.PASSWORD %>:</label>
+      <input type="password" name="password">
+      <input type="submit" class="btn btn-submit" value="<%=texts.SUBMIT %>">
+    </form>
+  </body>
+</html>

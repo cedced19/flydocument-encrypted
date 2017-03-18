@@ -9,6 +9,8 @@
   "ACCESS_FILE_MSG": "You need to provide a passphrase to decrypt and get the file.",
   "NEW_ACCOUNT": "New account",
   "NEW_ACCOUNT_MSG": "Create a new account to access to file upload.",
+  "LOGIN_PAGE": "Login page",
+  "LOGIN_PAGE_MSG": "Login to",
   "USER_SAVED": "User saved",
   "USER_SAVED_MSG": "The new user has been saved.",
   "USERS_LIST": "Users list",

@@ -9,6 +9,14 @@ var compression = require('compression');
 var minifyTemplate = require('express-beautify').minify;
 var minifyCSS = require('express-minify');
 
+var passport = require('passport');
+var flash = require('connect-flash');
+var helmet = require('helmet');
+var session = require('express-session');
+
+var MongoDBStore = require('connect-mongodb-session')(session);
+var LocalStrategy = require('passport-local').Strategy;
+
 var index = require('./routes/index');
 var files = require('./routes/files-api');
 var users = require('./routes/users-api');
@@ -41,9 +49,76 @@ app.use(i18n({
   siteLangs: ['en','fr']
 }));
 
+app.use(helmet());
+app.use(flash());
+app.use(session({
+    secret: 'just learn faster',
+    name: 'flydocument-encrypted-session',
+    proxy: false,
+    resave: true,
+    saveUninitialized: true,
+    store: new MongoDBStore({
+      uri: 'mongodb://localhost:27017/flydocument',
+      collection: 'sessions'
+    })
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use('/', index);
 app.use('/files', files);
 app.use('/users', users);
+
+var getUser = function (config, email) {
+  for (var i in config.users) {
+    if (config.users[i].email == email)  {
+      return config.users[i];
+    }
+  }
+  return false;
+};
+
+var bcrypt = require('bcrypt');
+
+// authentication
+passport.serializeUser(function(user, done) {
+      done(null, user.email);
+});
+
+passport.deserializeUser(function(email, done) {
+      var config = require('./configuration.json');
+      var user = getUser(config, email);
+      delete user.password;
+      done(null, user);
+});
+
+// define local strategy
+passport.use('local', new LocalStrategy({
+      usernameField: 'email',
+      passwordField: 'password'
+},
+function(email, password, done) {
+        // search in database
+        var config = require('./configuration.json');
+        var user = getUser(config, email);
+        if (!user) {
+          return done(null, false, {
+              message: 'Invalid email.'
+          });
+        }
+        bcrypt.compare(password, user.password, function(err, res) {
+          if (res) {
+            return done(null, {email: email}, {
+                message: 'Logged in successfully.'
+            });
+          } else {
+            return done(null, false, {
+                message: 'Invalid password.'
+            });
+          }
+        });
+}));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
