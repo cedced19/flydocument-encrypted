@@ -30,5 +30,9 @@
   "USER_DELETED": "Utilisateur supprimé",
   "USER_DELETED_MSG": "L'utilisateur a été supprimé avec succès.",
   "USER_NOT_DELETED": "Utilisateur non supprimé",
-  "USER_NOT_DELETED_MSG": "L'utilisateur n'a pas été supprimé : vous ne pouvez pas supprimer votre propre compte."
+  "USER_NOT_DELETED_MSG": "L'utilisateur n'a pas été supprimé : vous ne pouvez pas supprimer votre propre compte.",
+  "FILES": "Fichiers",
+  "FILES_LIST": "Liste des fichiers",
+  "FILE_DELETING_ERROR": "Erreur lors de la suppression du fichier",
+  "FILE_DELETED": "Le fichier a été supprimé."
 }

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Flydocument Encrypted | <%=texts.FILES_LIST %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>Flydocument Encrypted</h1>
+    <%if (error.length) { %>
+      <span class="error-box">
+      <%if (error[0] == 'file-deleting-error') { %>
+        <%=texts.FILE_DELETING_ERROR %>: <%=file %>
+      <% } %>
+      </span>
+    <% } %>
+    <%if (message.length) { %>
+      <span class="info-box">
+      <%if (message[0] == 'file-deleted') { %>
+        <%=texts.FILE_DELETED %>
+      <% } %>
+      </span>
+    <% } %>
+    <h2><%=texts.FILES_LIST %></h2>
+    <table>
+      <tr>
+        <th><%=texts.FILES %></th>
+        <th><%=texts.ACTIONS %></th>
+      </tr>
+      <% for(var i=0; i<files.length; i++) {%>
+        <tr>
+          <td><%= files[i] %></td>
+          <td><a href="/files/delete/<%= files[i] %>">✖</a></td>
+        </tr>
+      <% } %>
+      <p class="footer">
+        <a href="/"><%=texts.HOME_PAGE %></a>
+        <span><%=texts.FILES_LIST %></span>
+        <a href="/users/"><%=texts.USERS_LIST %></a>
+        <a href="/logout"><%=texts.LOGOUT %></a>
+      </p>
+    </table>
+
+  </body>
+</html>

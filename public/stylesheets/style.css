@@ -123,9 +123,17 @@ td a {
     text-decoration: none;
 }
 
-.error-box {
-	padding:15px;
+.error-box, .info-box {
+  padding:15px;
   display: block;
+}
+
+.error-box {
 	color:#c7254e;
 	background-color:#f9f2f4
+}
+
+.info-box {
+  background-color: #6cb0de;
+  color: #0c1721;
 }

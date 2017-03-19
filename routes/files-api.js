@@ -10,9 +10,37 @@ var multer = require('multer')({
   dest: config.files_folder
 });
 
+/* GET Files: get all files */
+router.get('/', auth, function(req, res, next) {
+    fs.readdir(config.files_folder, function (err, files) {
+      if (err) {
+        err = new Error('Cannot get files.');
+        err.status = 500;
+        return next(err);
+      }
+      res.locals.files = files.map(function (name) {
+        return name.replace('.enc', '')
+      });
+      res.render('files-list', {error: req.flash('error'), message: req.flash('message'), file: req.flash('file')});
+    });
+});
+
+/* GET Delete file: delete an user */
+router.get('/delete/:id', auth, function(req, res, next) {
+    fs.unlink(config.files_folder + req.params.id + '.enc', function (err) {
+      if (err) {
+        res.status = 500;
+        req.flash('error', 'file-deleting-error');
+        req.flash('file', req.params.id);
+      } else {
+        req.flash('message', 'file-deleted');
+      }
+      res.redirect('/files/');
+    });
+});
 
 /* POST File: create a file */
-router.post('/', auth, multer.single('file'), function(req, res, next) {
+router.post('/new', auth, multer.single('file'), function(req, res, next) {
     if (req.file === undefined) {
       err = new Error('You must upload a file.');
       err.status = 400;
