@@ -17,7 +17,11 @@
      <br>
      <input type="submit" class="btn btn-submit" value="<%=texts.SUBMIT %>">
     </form>
-    <a href="/logout" class="logout-btn"><%=texts.LOGOUT %></a>
+    <p class="footer">
+      <span><%=texts.HOME_PAGE %></span>
+      <a href="/users/"><%=texts.USERS_LIST %></a>
+      <a href="/logout"><%=texts.LOGOUT %></a>
+    </p>
     <script type="text/javascript">
       document.getElementById('file-input').addEventListener('change', function () {
         document.getElementById('file-label').innerHTML = this.files[0].name;

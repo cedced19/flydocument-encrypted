@@ -20,11 +20,34 @@ var saveConfiguration = function (cb) {
 
 /* GET Users: get all users */
 router.get('/', auth, function(req, res) {
+    res.locals.users = config.users;
     res.render('users-list');
+});
+
+/* GET Delete user: delete an user */
+router.get('/delete/:email', auth, function(req, res) {
+    if (req.user.email == req.params.email) {
+      res.locals.success = 'user-not-deleted';
+      res.render('success-page');
+    } else {
+      var user = getUser(req.params.email);
+      config.users.splice(user.key, 1);
+      saveConfiguration(function (err) {
+        if (err) {
+          err = new Error('Error deleting the user.');
+          err.status = 500;
+          return next(err);
+        }
+        res.locals.success = 'user-deleted';
+        res.render('success-page');
+      });
+
+    }
 });
 
 /* GET New user: create new account */
 router.get('/new/', auth, function(req, res) {
+    res.locals.connected = (config.users.length == 0);
     res.render('new-account');
 });
 

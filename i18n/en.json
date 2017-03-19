@@ -14,11 +14,21 @@
   "USER_SAVED": "User saved",
   "USER_SAVED_MSG": "The new user has been saved.",
   "USERS_LIST": "Users list",
+  "USERS_LIST_MSG": "Users list, you can create a user",
+  "HERE": "here",
   "PASSPHRASE": "Passphrase",
   "PASSWORD": "Password",
   "EMAIL": "Email",
+  "EMAILS": "Emails",
+  "ACTIONS": "Actions",
   "FILE": "File",
   "SUBMIT": "Submit",
   "BROWSE": "Browse",
-  "LOGOUT": "Logout"
+  "LOGOUT": "Logout",
+  "INVALID_EMAIL": "The email entered is invalid.",
+  "INVALID_PASSWORD": "The password entered is invalid.",
+  "USER_DELETED": "User deleted",
+  "USER_DELETED_MSG": "The user has been deleted with success.",
+  "USER_NOT_DELETED": "User not deleted",
+  "USER_NOT_DELETED_MSG": "The user has not been deleted: you can delete your own account."
 }

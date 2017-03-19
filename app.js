@@ -89,33 +89,27 @@ passport.serializeUser(function(user, done) {
 passport.deserializeUser(function(email, done) {
       var config = require('./configuration.json');
       var user = getUser(config, email);
-      delete user.password;
-      done(null, user);
+      done(null, {email: user.email});
 });
 
 // define local strategy
 passport.use('local', new LocalStrategy({
       usernameField: 'email',
-      passwordField: 'password'
+      passwordField: 'password',
+      passReqToCallback: true
 },
-function(email, password, done) {
+function(req, email, password, done) {
         // search in database
         var config = require('./configuration.json');
         var user = getUser(config, email);
         if (!user) {
-          return done(null, false, {
-              message: 'Invalid email.'
-          });
+          return done(null, false, req.flash('message', 'invalid-email'));
         }
         bcrypt.compare(password, user.password, function(err, res) {
           if (res) {
-            return done(null, {email: email}, {
-                message: 'Logged in successfully.'
-            });
+            return done(null, {email: email});
           } else {
-            return done(null, false, {
-                message: 'Invalid password.'
-            });
+            return done(null, false, req.flash('message', 'invalid-password'));
           }
         });
 }));

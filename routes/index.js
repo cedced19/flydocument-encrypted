@@ -16,12 +16,14 @@ router.get('/', function(req, res, next) {
 
 /* GET login page */
 router.get('/login', function(req, res) {
+    res.locals.message = req.flash('message');
     res.render('login');
 });
 
 /* GET login */
 router.post('/login', passport.authenticate('local', {
-    failureRedirect : '/login'
+    failureRedirect : '/login',
+		failureFlash : true
 }), function(req, res) {
     res.redirect('/');
 });
