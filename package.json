@@ -2,7 +2,8 @@
   "name": "flydocument-encrypted",
   "version": "0.0.0",
   "scripts": {
-    "start": "node ./bin/flydocument-encrypted"
+    "start": "node ./bin/flydocument-encrypted",
+    "install": "node-gyp configure; node-gyp build"
   },
   "dependencies": {
     "bcrypt": "^1.0.2",
